@@ -1,0 +1,26 @@
+main {
+    padding: var(--spacing-blocks);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 100vh;
+    
+    .auth__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
+        background-color: var(--yd-color-surface-secondary);
+        border: var(--border-xs) solid var(--yd-color-border-secondary);
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-minimal);
+        min-width: 25rem;
+        height: 100%;
+
+        .auth__footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: auto;
+        }
+    }
+}

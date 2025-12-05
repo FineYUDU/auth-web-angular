@@ -1,23 +1,15 @@
 import { Routes } from '@angular/router';
+import { Auth } from './auth/auth';
 
 export const routes: Routes = [
     {
         path:'auth',
-        children:[
-            {
-                path:'main',
-                loadComponent:()=> import('./auth/views/main/main')
-            },
-            {
-                path:'login',
-                loadComponent:()=> import('./auth/views/login/login')
-            },
-            {
-                path:'create-accout',
-                loadComponent:()=> import('./auth/views/create-accout/create-accout')
-            },
-            { path:'**', pathMatch:'full', redirectTo:'main'}
-        ]
+        loadChildren:()=> import('./auth/auth.routes')
+        // TODO:Guards
     },
-    { path:'**', pathMatch:'full', redirectTo:'auth'}
+    { 
+        path:'**', 
+        pathMatch:'full', 
+        redirectTo:'auth'
+    }
 ];
