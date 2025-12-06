@@ -12,8 +12,8 @@ export const authRoutes:Routes = [
                 loadComponent:()=> import('./views/login/login')
             },
             {
-                path:'create-accout',
-                loadComponent:()=> import('./views/create-accout/create-accout')
+                path:'create-account',
+                loadComponent:()=> import('./views/create-account/create-account')
             },
             { 
                 path:'**', 

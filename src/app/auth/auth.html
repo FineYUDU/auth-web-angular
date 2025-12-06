@@ -1,24 +1,30 @@
 <main>
     <div class="auth__container">
         <div class="auth__header">
-            <p class="
-                font__size--h5
-                font__color--primary
-                font__weight--regular
-                ">
-                {{'Login'}}
-            </p>
+            <img 
+                ngSrc="../../assets/img/logo.svg"
+                alt="fine-yudu logo"
+                width="80"
+                height="80"
+                priority
+            >
         </div>
         <div class="auth__body">
             <router-outlet/>
         </div>
         <div class="auth__footer">
             <p class="
-                font__size--b2
-                font__color--secondary
+                font__size--c1
+                font__color--tertiary
                 font__weight--regular
                 ">
-                © 2025 Dev by FineYudu 
+                © 2025 {{'auth.footer' | translate:translation.GetLang }}
+                <span class="
+                    font__color--secondary
+                    font__weight--regular
+                    ">
+                    {{company()}}
+                </span>
             </p>
         </div>
     </div>
