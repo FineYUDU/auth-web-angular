@@ -1,1 +1,49 @@
-<p>login works!</p>
+<div class="login__container">
+    <div class="login__header">
+        <p class="
+            font__size--h6
+            font__color--primary
+            font__weight--regular
+            ">
+            {{ 'login.title' | translate:translation.GetLang }}
+        </p>
+        <p class="
+            font__size--b2
+            font__color--secondary
+            font__weight--regular
+            ">
+            {{ 'login.subtitle' | translate:translation.GetLang }}
+        </p>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <input 
+            type="text"
+            [placeholder]="'example@gmail.com'"
+            formControlName="email"
+            autocomplete="current-email"
+        >
+        <input 
+            type="password"
+            formControlName="password"
+            autocomplete="current-password"
+        >
+        <yd-button 
+            fullSize
+            type="submit">
+            {{'button.login' | translate:translation.GetLang}}
+        </yd-button>
+    </form>
+    <div class="login__footer">
+        <p class="
+            font__size--b2
+            font__color--secondary
+            font__weight--regular
+            ">
+            {{ 'login.footer' | translate:translation.GetLang }}
+            <a routerLink="../create-account">
+                {{ 'login.url' | translate:translation.GetLang }}
+            </a>
+        </p>
+    </div>
+</div>
+
