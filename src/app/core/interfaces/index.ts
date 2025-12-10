@@ -1,0 +1,1 @@
+export type { LoginUser, LoginResp } from './user.interfaces';
