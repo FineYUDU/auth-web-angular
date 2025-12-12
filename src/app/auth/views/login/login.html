@@ -30,7 +30,12 @@
         <yd-button 
             fullSize
             type="submit">
-            {{'button.login' | translate:translation.GetLang}}
+            @if(isSubmited()) {
+                {{'send...' | translate:translation.GetLang}}
+            }
+            @else {
+                {{'button.login' | translate:translation.GetLang}}
+            }
         </yd-button>
     </form>
     <div class="login__footer">

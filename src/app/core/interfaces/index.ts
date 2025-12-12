@@ -1,1 +1,2 @@
-export type { LoginUser, LoginResp } from './user.interfaces';
+export type { User } from './user.interfaces';
+export type { AuthResponse } from './auth-response.interface';

@@ -7,9 +7,8 @@ import { YdButton } from "yudu-component-kit";
 import { Translation } from '@core/services/translation';
 
 import { TranslatePipe } from '@core/pipes/translate.pipe';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Auth } from '@core/http/auth';
-import { LoginUser } from '@core/interfaces';
 @Component({
   selector: 'app-login',
   imports: [
@@ -22,41 +21,46 @@ import { LoginUser } from '@core/interfaces';
   styleUrl: './login.css',
 })
 export default class Login {
-  private fr = inject( FormBuilder );
+  private fb = inject( FormBuilder );
   public translation = inject( Translation );
   public auth = inject(Auth);
+  public router = inject(Router);
 
   public hasError = signal<boolean>(false);
   public isSubmited = signal<boolean>(false);
 
-  loginForm = this.fr.group({
+  loginForm = this.fb.group({
     email:['', [Validators.required, Validators.email]],
     password:['', [Validators.required, Validators.minLength(6)]],
   });
 
   public onSubmit():void {
-    // if(this.loginForm.invalid) {
-    //   console.log( 'Invalid form');
-    //   return;
-    // } 
+    this.isSubmited.set(true);
+    
     const submit = ()=> {
-      this.isSubmited.set(true);
-      const user:LoginUser = {
-        email:'fine_567@hotmail.com',
-        password:'Qwerty123*'
-      }
+      this.isSubmited.set(false);
 
-      console.log(user);
-      this.auth.login(user).subscribe({
-        next:resp => console.log(resp),
-        error:err => console.log(err),
+      if(this.loginForm.invalid) {
+        this.hasError.set(true);
+        return;
+      }
+      const { email, password } = this.loginForm.value;
+
+      this.auth.login( email!, password!)
+      .subscribe((isAuthenticated)=> {
+        if(isAuthenticated) {
+          this.router.navigateByUrl('/');
+          return;
+        } 
+        this.hasError.set(true);
       })
     }
-    asyncScheduler.schedule(submit, 1500);
-    
-    const { email, password } = this.loginForm.value;
-    console.log( email, password );
-
+    asyncScheduler.schedule(submit, 2500);    
   }
+  // Check Authentication
+
+  // Register 
+
+  // Logout
 
 }
