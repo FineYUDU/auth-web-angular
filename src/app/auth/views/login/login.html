@@ -16,17 +16,22 @@
         </p>
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
-        <input 
-            type="text"
-            [placeholder]="'example@gmail.com'"
+        <yd-input
+            type="email"
+            [placeholder]="'example@gmail.com' | translate:translation.GetLang"
             formControlName="email"
             autocomplete="current-email"
-        >
-        <input 
+            fullSize
+            [icon]="'envelope'"
+        />
+        <yd-input
             type="password"
+            [placeholder]="'password' | translate:translation.GetLang"
             formControlName="password"
+            fullSize
             autocomplete="current-password"
-        >
+            [icon]="'lock'"
+        />
         <yd-button 
             fullSize
             type="submit">

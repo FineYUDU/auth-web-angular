@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { asyncScheduler } from 'rxjs';
 import { YdButton } from "yudu-component-kit";
+import { YdInput } from "yudu-component-kit";
 
 import { Translation } from '@core/services/translation';
 
@@ -13,9 +14,10 @@ import { Auth } from '@core/http/auth';
   selector: 'app-login',
   imports: [
     ReactiveFormsModule, 
-    YdButton,
+    RouterLink,
     TranslatePipe,
-    RouterLink
+    YdButton,
+    YdInput
   ],
   templateUrl: './login.html',
   styleUrl: './login.css',
