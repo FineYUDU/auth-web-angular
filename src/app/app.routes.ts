@@ -4,6 +4,7 @@ import { Auth } from './auth/auth';
 export const routes: Routes = [
     {
         path:'auth',
+        title:'Authentication',
         loadChildren:()=> import('./auth/auth.routes')
         // TODO:Guards
     },

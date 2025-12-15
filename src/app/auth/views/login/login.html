@@ -18,7 +18,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <yd-input
             type="email"
-            [placeholder]="'example@gmail.com' | translate:translation.GetLang"
+            [placeholder]="'input.email' | translate:translation.GetLang"
             formControlName="email"
             autocomplete="current-email"
             fullSize
@@ -26,7 +26,7 @@
         />
         <yd-input
             type="password"
-            [placeholder]="'password' | translate:translation.GetLang"
+            [placeholder]="'input.password' | translate:translation.GetLang"
             formControlName="password"
             fullSize
             autocomplete="current-password"

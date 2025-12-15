@@ -9,10 +9,12 @@ export const authRoutes:Routes = [
         children:[
             {
                 path:'login',
+                title:'Login',
                 loadComponent:()=> import('./views/login/login')
             },
             {
                 path:'create-account',
+                title:'Create Account',
                 loadComponent:()=> import('./views/create-account/create-account')
             },
             { 

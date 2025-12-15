@@ -20,6 +20,10 @@
         "footer":"Don´t have an account yet?",
         "url":"Create Acount"
     },
+    "input":{
+        "email":"example@gmail.com",
+        "password":"Password"
+    },
     "create-account":{
         "title":"Create Account",
         "subtitle":"Enter your information to create an account",
