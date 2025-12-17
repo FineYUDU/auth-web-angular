@@ -29,6 +29,7 @@ export default class Login {
   public router = inject(Router);
 
   public hasError = signal<boolean>(false);
+  public errorMessage = signal<string | undefined>(undefined);
   public isSubmited = signal<boolean>(false);
 
   loginForm = this.fb.group({
@@ -38,20 +39,17 @@ export default class Login {
 
   public onSubmit():void {
     this.isSubmited.set(true);
+    this.hasError.set(false);
     
     const submit = ()=> {
       this.isSubmited.set(false);
 
-      if(this.loginForm.invalid) {
-        this.hasError.set(true);
-        return;
-      }
       const { email, password } = this.loginForm.value;
-
+      
       this.auth.login( email!, password!)
       .subscribe((isAuthenticated)=> {
         if(isAuthenticated) {
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/dashboard');
           return;
         } 
         this.hasError.set(true);

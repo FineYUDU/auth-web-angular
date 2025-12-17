@@ -17,23 +17,26 @@
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <yd-input
-            type="email"
+            [autocomplete]="'current-email'"
+            [hasError]="hasError()"
+            [icon]="'envelope'"
             [placeholder]="'input.email' | translate:translation.GetLang"
             formControlName="email"
-            autocomplete="current-email"
             fullSize
-            [icon]="'envelope'"
+            type="email"
         />
         <yd-input
-            type="password"
+            [autocomplete]="'current-password'"
+            [hasError]="hasError()"
+            [icon]="'lock'"
             [placeholder]="'input.password' | translate:translation.GetLang"
             formControlName="password"
             fullSize
-            autocomplete="current-password"
-            [icon]="'lock'"
+            type="password"
         />
         <yd-button 
             fullSize
+            [disabled]="loginForm.invalid"
             type="submit">
             @if(isSubmited()) {
                 {{'send...' | translate:translation.GetLang}}

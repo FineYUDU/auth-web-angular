@@ -8,6 +8,11 @@ export const routes: Routes = [
         loadChildren:()=> import('./auth/auth.routes')
         // TODO:Guards
     },
+    {
+        path:'dashboard',
+        title:'Dashboard',
+        loadChildren:()=> import('./dashboard/dashboard.routes')
+    },
     { 
         path:'**', 
         pathMatch:'full', 
