@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
+import { Auth } from '@core/http/auth';
 
 @Component({
   selector: 'app-main',
@@ -8,4 +10,6 @@ import { Component } from '@angular/core';
 })
 export default class Main {
 
+  public auth = inject( Auth );
+  
 }

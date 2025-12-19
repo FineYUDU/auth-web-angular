@@ -32,7 +32,7 @@
     "@angular/router": "^20.3.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "yudu-component-kit": "^0.0.21"
+    "yudu-component-kit": "^1.0.1"
   },
   "devDependencies": {
     "@angular/build": "^20.3.0",

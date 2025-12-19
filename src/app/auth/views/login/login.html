@@ -28,6 +28,7 @@
         <yd-input
             [autocomplete]="'current-password'"
             [hasError]="hasError()"
+            [errorMessage]="errorMessage() | translate:translation.GetLang"
             [icon]="'lock'"
             [placeholder]="'input.password' | translate:translation.GetLang"
             formControlName="password"
@@ -53,7 +54,7 @@
             font__weight--regular
             ">
             {{ 'login.footer' | translate:translation.GetLang }}
-            <a routerLink="../create-account">
+            <a routerLink="../create-account" class="font__color--link">
                 {{ 'login.url' | translate:translation.GetLang }}
             </a>
         </p>

@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
 
-import { User } from '@core/interfaces';
-
-import { environment } from '../../../environments/environment.development';
 import { catchError, Observable, tap, map, of } from 'rxjs';
-import { AuthResponse } from '@core/interfaces/auth-response.interface';
+import { rxResource } from '@angular/core/rxjs-interop';
+
+import { User, AuthResponse } from '@core/interfaces';
+
+import { environment } from '@environments/environment.development';
 
 export type AuthStatus = 'checking' | 'authenticated' | 'not-authenticated';
 
@@ -15,41 +16,81 @@ export type AuthStatus = 'checking' | 'authenticated' | 'not-authenticated';
 export class Auth {
   public _http = inject( HttpClient );
 
-  public _baseUrl = signal<string>(environment.apiUrl);
+  public readonly baseUrl:string = (environment.apiUrl);
   private _authStatus = signal<AuthStatus>('checking');
   private _user = signal<User | null>(null);
   private _token = signal<string | null>(null);
 
-  public authStatus = computed(()=> {
-    if(this.authStatus() === 'checking') return 'checking';
+  checkStatusResource = rxResource({
+    stream: () => this.checkStatus(),
+  })
 
-    if(this._user()) return 'authenticated';
+  public authStatus = computed<AuthStatus>(()=> {
+    if(this._authStatus() === 'checking') return 'checking';
 
-    return 'not-authenticated';
+    return this._user() ? 'authenticated' : 'not-authenticated';
   });
 
   public user = computed<User | null>(()=> this._user());
 
   public login( email:string, password:string ):Observable<boolean> {
-    return this._http.post<AuthResponse>(`${this._baseUrl()}login`,{
-      email,
-      password,
+    
+    return this._http.post<AuthResponse>(`${this.baseUrl}login`,{
+      email: email,
+      password: password,
     }).pipe(
-      tap(resp => {
-        this._user.set(resp.user);
-        this._authStatus.set('authenticated');
-        this._token.set(resp.token);
-
-        localStorage.setItem('token', resp.token);
-      }),
-      map(()=> true),
-      catchError((error:any)=> {
-        this._user.set(null);
-        this._token.set(null);
-        this._authStatus.set('not-authenticated');
-        return of(false)
-      })
+      map(resp => this.handleAuthSuccess(resp)),
+      catchError((error:any)=> this.handleAuthError(error))
     )
+  };
+
+  public createAccount( 
+    email:string,
+    password:string,
+    firstName:string,
+    lastName:string 
+  ):Observable<boolean> {
+    return of(true);
+  }
+
+  public checkStatus():Observable<boolean> {
+    const token = localStorage.getItem('token');
+    if( !token ) {
+      this.logout();
+      return of(false);
+    } 
+
+    return this._http.get<AuthResponse>(`${this.baseUrl}/check-status`, {
+      headers:{
+        Authorization:`Bearer ${token}`,
+      },
+    }).pipe(
+      map(resp => this.handleAuthSuccess(resp)),
+      catchError((error:any)=> this.handleAuthError(error))
+    )
+
+  };
+
+  private handleAuthSuccess({token, user}:AuthResponse):boolean {
+    this._user.set(user);
+    this._authStatus.set('authenticated');
+    this._token.set(token);
+
+    localStorage.setItem('token', token);
+    return true;
+  };
+
+  private handleAuthError(error:any):Observable<boolean> {
+    this.logout();
+    return of(false);
+  };
+
+  public logout():void {
+    this._authStatus.set('not-authenticated');
+    this._token.set(null);
+    this._user.set(null);
+
+    localStorage.removeItem('token');
   };
   
 }

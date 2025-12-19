@@ -1,1 +1,80 @@
-<p>create-account works!</p>
+<div class="create-account__container">
+    <div class="create-account__header">
+        <p class="
+            font__size--h6
+            font__color--primary
+            font__weight--regular
+            ">
+            {{ 'create-account.title' | translate:translation.GetLang }}
+        </p>
+        <p class="
+            font__size--b2
+            font__color--secondary
+            font__weight--regular
+            ">
+            {{ 'create-account.subtitle' | translate:translation.GetLang }}
+        </p>
+    </div>
+    <form [formGroup]="createAccountForm" (ngSubmit)="onSubmit()" autocomplete="off">
+        <yd-input
+            [autocomplete]="'first-name'"
+            [hasError]="hasError()"
+            [icon]="'user'"
+            [placeholder]="'input.first-name' | translate:translation.GetLang"
+            formControlName="firstName"
+            fullSize
+            type="text"
+        />
+        <yd-input
+            [autocomplete]="'last-name'"
+            [hasError]="hasError()"
+            [icon]="'user'"
+            [placeholder]="'input.last-name' | translate:translation.GetLang"
+            formControlName="lastName"
+            fullSize
+            type="text"
+        />
+        <yd-input
+            [autocomplete]="'current-email'"
+            [hasError]="hasError()"
+            [icon]="'envelope'"
+            [placeholder]="'input.email' | translate:translation.GetLang"
+            formControlName="email"
+            fullSize
+            type="email"
+        />
+        <yd-input
+            [autocomplete]="'current-password'"
+            [hasError]="hasError()"
+            [icon]="'lock'"
+            [placeholder]="'input.password' | translate:translation.GetLang"
+            formControlName="password"
+            fullSize
+            type="password"
+        />
+        <yd-button 
+            fullSize
+            [disabled]="createAccountForm.invalid"
+            type="submit">
+            @if(isSubmited()) {
+                {{'send...' | translate:translation.GetLang}}
+            }
+            @else {
+                {{'button.create-account' | translate:translation.GetLang}}
+            }
+        </yd-button>
+    </form>
+    <div class="create-account__footer">
+        <p class="
+            font__size--b2
+            font__color--secondary
+            font__weight--regular
+            ">
+            {{ 'create-account.footer' | translate:translation.GetLang }}
+            <a routerLink="../login" class="font__color--link">
+                {{ 'create-account.url' | translate:translation.GetLang }}
+            </a>
+        </p>
+    </div>
+</div>
+

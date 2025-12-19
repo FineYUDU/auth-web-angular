@@ -1,15 +1,16 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 
 import { asyncScheduler } from 'rxjs';
+
 import { YdButton } from "yudu-component-kit";
 import { YdInput } from "yudu-component-kit";
 
+import { Auth } from '@core/http/auth';
 import { Translation } from '@core/services/translation';
 
 import { TranslatePipe } from '@core/pipes/translate.pipe';
-import { Router, RouterLink } from '@angular/router';
-import { Auth } from '@core/http/auth';
 @Component({
   selector: 'app-login',
   imports: [
@@ -25,14 +26,14 @@ import { Auth } from '@core/http/auth';
 export default class Login {
   private fb = inject( FormBuilder );
   public translation = inject( Translation );
-  public auth = inject(Auth);
-  public router = inject(Router);
+  public auth = inject( Auth );
+  public router = inject( Router );
 
   public hasError = signal<boolean>(false);
   public errorMessage = signal<string | undefined>(undefined);
   public isSubmited = signal<boolean>(false);
 
-  loginForm = this.fb.group({
+  public loginForm = this.fb.group({
     email:['', [Validators.required, Validators.email]],
     password:['', [Validators.required, Validators.minLength(6)]],
   });
@@ -45,6 +46,7 @@ export default class Login {
       this.isSubmited.set(false);
 
       const { email, password } = this.loginForm.value;
+      console.log('LOGIN PAYLOAD:', { email, password });
       
       this.auth.login( email!, password!)
       .subscribe((isAuthenticated)=> {
@@ -52,6 +54,7 @@ export default class Login {
           this.router.navigateByUrl('/dashboard');
           return;
         } 
+        this.errorMessage.set('input.login-error')
         this.hasError.set(true);
       })
     }

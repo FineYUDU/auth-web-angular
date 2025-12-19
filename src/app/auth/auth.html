@@ -1,6 +1,6 @@
 <main>
     <div class="auth__container">
-        <div class="auth__header">
+        <div class="auth__header" [style.background-color]="theme.GetTheme === 'dark' ? 'var(--yd-color-surface-primary)' : 'var(--yd-color-surface-quinary)' ">
             <img 
                 ngSrc="../../assets/img/logo.svg"
                 alt="fine-yudu logo"
@@ -15,12 +15,12 @@
         <div class="auth__footer">
             <p class="
                 font__size--c1
-                font__color--tertiary
+                font__color--secondary
                 font__weight--regular
                 ">
                 © 2025 {{'auth.footer' | translate:translation.GetLang }}
                 <span class="
-                    font__color--secondary
+                    font__color--primary
                     font__weight--regular
                     ">
                     {{company()}}

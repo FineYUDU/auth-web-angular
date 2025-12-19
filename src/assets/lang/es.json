@@ -15,23 +15,20 @@
     "login":{
         "title":"Iniciar Sesión",
         "subtitle":"Ingresa tus datos para continuar.",
-        "email":"Correo Electrónico",
-        "password":"Contraseña",
         "footer":"¿Aun no tienes una cuenta?",
         "url":"Crear Cuenta"
     },
     "input":{
         "email":"ejemplo@gmail.com",
-        "password":"Contraseña"
+        "first-name":"Primer Nombre",
+        "last-name":"Apellidos",
+        "password":"Contraseña",
+        "confirm-password":"Confirmar Contraseña",
+        "login-error":"Por favor revise la información ingresada."
     },
     "create-account":{
         "title":"Crear Cuenta",
         "subtitle":"Ingresa tus datos para crear una cuenta",
-        "first-name":"Primer Nombre",
-        "last-name":"Apellidos",
-        "email":"Correo Electrónico",
-        "password":"Contraseña",
-        "confirm-password":"Confirmar Contraseña",
         "footer":"¿Ya tienes una cuenta?",
         "url":"Iniciar Sesión"
     }
