@@ -1,10 +1,37 @@
-@if(auth.authStatus() === 'authenticated') {
-    <span class="
-        font__size--b1
-        font__color--primary
-        font__weight--regular
-        ">
-        {{ auth.user()?.firstName }} {{ auth.user()?.lastName }}
-    </span>
+@defer {
+    @if(auth.authStatus() === 'authenticated') {
+        <span class="
+            font__size--b1
+            font__color--primary
+            font__weight--regular
+            ">
+            {{ auth.user()?.firstName }} {{ auth.user()?.lastName }}
+        </span>
+        <yd-button
+            [buttonStyle]="'secondary'"
+            (click)="auth.logout()"
+            >
+            logout
+        </yd-button>
+    } 
+    @else if(auth.authStatus() === 'not-authenticated') {
+        <yd-button
+            [buttonStyle]="'secondary'"
+            routerLink="/auth/login"
+            >
+            login
+        </yd-button>
+    } 
+    @else {
+        <span class="
+            font__size--b2
+            font__weight--bold
+            font__color--primary
+            ">
+            ...
+        </span>
+    }
 }
-<p>main works!</p>
+@placeholder(minimum 1500) {
+    <logo-loader></logo-loader>
+}

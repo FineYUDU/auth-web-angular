@@ -1,15 +1,23 @@
 import { Component, inject } from '@angular/core';
+import { RouterLink } from "@angular/router";
 
-import { Auth } from '@core/http/auth';
+import { YdButton } from 'yudu-component-kit';
 
+import { AuthApi } from '@core/http/auth-api';
+
+import { LogoLoader } from "@shared/components/logo-loader/logo-loader";
 @Component({
   selector: 'app-main',
-  imports: [],
+  imports: [
+    YdButton,
+    RouterLink,
+    LogoLoader
+],
   templateUrl: './main.html',
   styleUrl: './main.css',
 })
 export default class Main {
 
-  public auth = inject( Auth );
+  public auth = inject( AuthApi );
   
 }

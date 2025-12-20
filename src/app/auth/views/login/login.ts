@@ -4,29 +4,31 @@ import { Router, RouterLink } from '@angular/router';
 
 import { asyncScheduler } from 'rxjs';
 
-import { YdButton } from "yudu-component-kit";
+import { YdButton, YdIcon } from "yudu-component-kit";
 import { YdInput } from "yudu-component-kit";
 
-import { Auth } from '@core/http/auth';
+import { AuthApi } from '@core/http/auth-api';
+
 import { Translation } from '@core/services/translation';
 
 import { TranslatePipe } from '@core/pipes/translate.pipe';
 @Component({
   selector: 'app-login',
   imports: [
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     RouterLink,
     TranslatePipe,
     YdButton,
-    YdInput
-  ],
+    YdInput,
+    YdIcon
+],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
 export default class Login {
   private fb = inject( FormBuilder );
   public translation = inject( Translation );
-  public auth = inject( Auth );
+  public auth = inject( AuthApi );
   public router = inject( Router );
 
   public hasError = signal<boolean>(false);
@@ -43,27 +45,21 @@ export default class Login {
     this.hasError.set(false);
     
     const submit = ()=> {
-      this.isSubmited.set(false);
 
       const { email, password } = this.loginForm.value;
-      console.log('LOGIN PAYLOAD:', { email, password });
       
       this.auth.login( email!, password!)
       .subscribe((isAuthenticated)=> {
         if(isAuthenticated) {
+          this.isSubmited.set(false);
           this.router.navigateByUrl('/dashboard');
           return;
         } 
+        this.isSubmited.set(false);
         this.errorMessage.set('input.login-error')
         this.hasError.set(true);
       })
     }
     asyncScheduler.schedule(submit, 2500);    
   }
-  // Check Authentication
-
-  // Register 
-
-  // Logout
-
 }

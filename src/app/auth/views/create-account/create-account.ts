@@ -1,19 +1,17 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 
 import { asyncScheduler } from 'rxjs';
 
 import { YdButton } from "yudu-component-kit";
 import { YdInput } from "yudu-component-kit";
 
-import { Auth } from '@core/http/auth';
+import { AuthApi } from '@core/http/auth-api';
+
 import { Translation } from '@core/services/translation';
 
 import { TranslatePipe } from '@core/pipes/translate.pipe';
-
-
-import { Router, RouterLink } from '@angular/router';
-
 @Component({
   selector: 'app-create-account',
   imports: [
@@ -29,7 +27,7 @@ import { Router, RouterLink } from '@angular/router';
 export default class CreateAccount {
   private fb = inject( FormBuilder );
   public translation = inject( Translation );
-  public auth = inject( Auth );
+  public auth = inject( AuthApi );
   public router = inject( Router );
 
   public hasError = signal<boolean>(false);

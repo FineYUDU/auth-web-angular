@@ -1,20 +1,25 @@
 import { Component, inject, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common'
-import { environment } from '@environments/environment.development';
+import { RouterOutlet } from '@angular/router';
+
+import { Theme} from 'yudu-component-kit';
 
 import { Translation } from '@core/services/translation';
 
 import { TranslatePipe } from '@core/pipes/translate.pipe';
-import { Theme } from 'yudu-component-kit';
+
+import { environment } from '@environments/environment.development';
+
+import { LogoLoader } from "../shared/components/logo-loader/logo-loader";
 
 @Component({
   selector: 'app-auth',
-  imports: [ 
-    RouterOutlet, 
+  imports: [
+    RouterOutlet,
     NgOptimizedImage,
-    TranslatePipe, 
-  ],
+    TranslatePipe,
+    LogoLoader,
+],
   templateUrl: './auth.html',
   styleUrl: './auth.css',
 })

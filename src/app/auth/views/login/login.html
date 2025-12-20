@@ -40,7 +40,9 @@
             [disabled]="loginForm.invalid"
             type="submit">
             @if(isSubmited()) {
-                {{'send...' | translate:translation.GetLang}}
+                <yd-icon
+                    name="spinner"
+                />
             }
             @else {
                 {{'button.login' | translate:translation.GetLang}}

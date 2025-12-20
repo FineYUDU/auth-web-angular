@@ -20,6 +20,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.scss",
               "node_modules/yudu-component-kit/src/lib/styles/index.design-system.scss"
             ]
           },
