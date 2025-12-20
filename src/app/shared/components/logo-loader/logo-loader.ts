@@ -1,5 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Theme } from 'yudu-component-kit';
 
 @Component({
   selector: 'logo-loader',
@@ -13,5 +14,7 @@ import { Component } from '@angular/core';
   }
 })
 export class LogoLoader {
+
+  public theme = inject( Theme );
 
 }
