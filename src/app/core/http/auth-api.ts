@@ -21,6 +21,7 @@ export class AuthApi {
   private _authStatus = signal<AuthStatus>('checking');
   private _user = signal<User | null>(null);
   private _token = signal<string | null>(localStorage.getItem('token'));
+  private _errorMessage = signal<string | undefined>(undefined);
 
   checkStatusResource = rxResource({
     stream: () => this.checkStatus(),
@@ -37,6 +38,7 @@ export class AuthApi {
 
   public user = computed<User | null>(()=> this._user());
   public token = computed<string | null>(()=> this._token());
+  public errorMessage = computed<string | undefined>(()=> this._errorMessage());
 
   public login( email:string, password:string ):Observable<boolean> {
     
@@ -90,6 +92,12 @@ export class AuthApi {
   };
 
   private handleAuthError(error:any):Observable<boolean> {
+    if(error.name === 'HttpErrorResponse') {
+
+      if(error.statusText === "Unknown Error") this._errorMessage.set('error.unknown');
+      else this._errorMessage.set('input.login-error');
+      
+    }
     this.logout();
     return of(false);
   };

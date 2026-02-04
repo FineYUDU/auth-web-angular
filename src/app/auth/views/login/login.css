@@ -20,4 +20,5 @@ form {
     flex-direction: column;
     gap: var(--spacing-sm);
     align-items: center;
+    max-width: 16.5625rem;
 }

@@ -31,5 +31,8 @@
         "subtitle":"Ingresa tus datos para crear una cuenta",
         "footer":"¿Ya tienes una cuenta?",
         "url":"Iniciar Sesión"
+    },
+    "error":{
+        "unknown":"No se pudo conectar con el servidor. Intenta de nuevo más tarde."
     }
 }

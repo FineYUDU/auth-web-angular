@@ -12,6 +12,7 @@ import { AuthApi } from '@core/http/auth-api';
 import { Translation } from '@core/services/translation';
 
 import { TranslatePipe } from '@core/pipes/translate.pipe';
+import { error } from 'console';
 @Component({
   selector: 'app-login',
   imports: [
@@ -49,15 +50,17 @@ export default class Login {
       const { email, password } = this.loginForm.value;
       
       this.auth.login( email!, password!)
-      .subscribe((isAuthenticated)=> {
-        if(isAuthenticated) {
+      .subscribe({
+        next:(isAuthenticated)=> {
+          if(isAuthenticated) {
+            this.isSubmited.set(false);
+            this.router.navigateByUrl('/dashboard');
+            return;
+          }
           this.isSubmited.set(false);
-          this.router.navigateByUrl('/dashboard');
-          return;
-        } 
-        this.isSubmited.set(false);
-        this.errorMessage.set('input.login-error')
-        this.hasError.set(true);
+          this.errorMessage.set(this.auth.errorMessage())
+          this.hasError.set(true);
+        },
       })
     }
     asyncScheduler.schedule(submit, 2500);    

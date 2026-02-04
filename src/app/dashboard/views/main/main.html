@@ -1,18 +1,20 @@
 @defer {
     @if(auth.authStatus() === 'authenticated') {
-        <span class="
-            font__size--b1
-            font__color--primary
-            font__weight--regular
-            ">
-            {{ auth.user()?.firstName }} {{ auth.user()?.lastName }}
-        </span>
-        <yd-button
-            [buttonStyle]="'secondary'"
-            (click)="auth.logout()"
+        <div class="main__container">
+            <yd-navbar 
+                (signOutEmit)="this.auth.logout()"
+                [username]="'FineYudu'"
+                [fullName]="'Erick Alcocer'"
+                [notifications]="notifications()"
+                [settingsMenu]="settingsMenu()"
+                [profileImg]="profileImg() || ''"
+                [companyLogo]="companyLogo()"
+                [companyLogoRoute]="''"
+                [navMenu]="navMenu()"
             >
-            logout
-        </yd-button>
+    
+            </yd-navbar>
+        </div>
     } 
     @else if(auth.authStatus() === 'not-authenticated') {
         <yd-button
@@ -35,3 +37,4 @@
 @placeholder(minimum 1500) {
     <logo-loader></logo-loader>
 }
+

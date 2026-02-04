@@ -31,5 +31,8 @@
         "subtitle":"Enter your information to create an account",
         "footer":"Already have an account?",
         "url":"Login"
+    },
+    "error":{
+        "unknown":"Couldn’t connect to the server. Please try again later."
     }
 }
