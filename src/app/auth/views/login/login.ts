@@ -2,6 +2,8 @@ import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
+import { I18nService } from 'yudu-component-kit/i18n';
+
 import { asyncScheduler } from 'rxjs';
 
 import { YdButton, YdIcon } from "yudu-component-kit";
@@ -9,16 +11,11 @@ import { YdInput } from "yudu-component-kit";
 
 import { AuthApi } from '@core/http/auth-api';
 
-import { Translation } from '@core/services/translation';
-
-import { TranslatePipe } from '@core/pipes/translate.pipe';
-import { error } from 'console';
 @Component({
   selector: 'app-login',
   imports: [
     ReactiveFormsModule,
     RouterLink,
-    TranslatePipe,
     YdButton,
     YdInput,
     YdIcon
@@ -28,9 +25,9 @@ import { error } from 'console';
 })
 export default class Login {
   private fb = inject( FormBuilder );
-  public translation = inject( Translation );
   public auth = inject( AuthApi );
   public router = inject( Router );
+  public translation = inject( I18nService );
 
   public hasError = signal<boolean>(false);
   public errorMessage = signal<string | undefined>(undefined);

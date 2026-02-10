@@ -1,1 +1,34 @@
-<router-outlet/>
+@defer {
+    @if(auth.authStatus() === 'authenticated') {
+        <main>
+            <div class="dashboard__container">
+                <yd-navbar 
+                    (signOutEmit)="this.auth.logout()"
+                    [title]="auth.user()!.roles[0].toUpperCase() || ''"
+                    [subTitle]="`${auth.user()!.firstName} ${auth.user()!.lastName}` || '' | titlecase "
+                    [notifications]="notifications()"
+                    [userMenu]="userMenu()"
+                    [profileImg]="profileImg() || ''"
+                    [companyLogo]="companyLogo()"
+                    [companyLogoRoute]="''"
+                    [headerMenu]="headerMenu()"
+                    [themeMenu]="themeMenu()"
+                    [langMenu]="langMenu()"
+                    [filtersOptions]="filtersOptions()"
+                    [notificationsTitle]="translation.translate('notifications.title')"
+                    [signOutTitle]="this.translation.translate('route.sign-out')"
+                    [placeholder]="translation.translate('placeholder.search')"
+                >
+        
+                </yd-navbar>
+                <div class="router-outlet__container">
+                    <router-outlet/>
+                </div>
+            </div>
+        </main>
+    } 
+}
+@placeholder(minimum 1500) {
+    <logo-loader></logo-loader>
+}
+

@@ -1,38 +1,62 @@
 {
     "lang": {
-        "current":"Español",
-        "es":"Español",
-        "en":"Inglés"
+        "lang":"lenguaje",
+        "current":"español",
+        "es":"español",
+        "en":"inglés"
+    },
+    "theme":{
+        "theme":"tema",
+        "dark":"oscuro",
+        "light":"claro"
+    },
+    "route":{
+        "overview":"resumen",
+        "employees":"empleados",
+        "settings":"configuración",
+        "profile":"perfil",
+        "sign-out":"cerrar sesión"
     },
     "button":{
-        "login":"Iniciar Sesión",
-        "create-account":"Crear Cuenta"
+        "login":"iniciar Sesión",
+        "create-account":"crear cuenta"
     },
     "auth":{
-        "title":"Bienvenido de vuelta",
-        "footer":"Desarrollado por"
+        "title":"bienvenido de vuelta",
+        "footer":"desarrollado por"
     },
     "login":{
-        "title":"Iniciar Sesión",
-        "subtitle":"Ingresa tus datos para continuar.",
-        "footer":"¿Aun no tienes una cuenta?",
-        "url":"Crear Cuenta"
+        "title":"iniciar Sesión",
+        "subtitle":"ingresa tus datos para continuar.",
+        "footer":"¿aun no tienes una cuenta?",
+        "url":"crear cuenta"
     },
     "input":{
         "email":"ejemplo@gmail.com",
-        "first-name":"Primer Nombre",
-        "last-name":"Apellidos",
-        "password":"Contraseña",
-        "confirm-password":"Confirmar Contraseña",
-        "login-error":"Por favor revise la información ingresada."
+        "first-name":"primer nombre",
+        "last-name":"apellidos",
+        "password":"contraseña",
+        "confirm-password":"confirmar Contraseña",
+        "login-error":"por favor revise la información ingresada."
+    },
+    "placeholder":{
+        "search":"Buscar"
     },
     "create-account":{
-        "title":"Crear Cuenta",
-        "subtitle":"Ingresa tus datos para crear una cuenta",
-        "footer":"¿Ya tienes una cuenta?",
-        "url":"Iniciar Sesión"
+        "title":"crear cuenta",
+        "subtitle":"ingresa tus datos para crear una cuenta",
+        "footer":"¿ya tienes una cuenta?",
+        "url":"iniciar Sesión"
     },
     "error":{
-        "unknown":"No se pudo conectar con el servidor. Intenta de nuevo más tarde."
+        "unknown":"no se pudo conectar con el servidor. Intenta de nuevo más tarde."
+    },
+    "notifications":{
+        "title":"notificaciones",
+        "filter":{
+            "all":"todas",
+            "week":"esta semana",
+            "earlier":"anteriores"
+        }
     }
 }

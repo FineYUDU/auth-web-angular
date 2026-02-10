@@ -5,6 +5,7 @@ import { provideRouter } from '@angular/router';
 import { authInterceptor } from '@core/interceptors/auth.interceprot';
 
 import { routes } from './app.routes';
+import { provideYuduI18n } from 'yudu-component-kit/i18n';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,5 +17,11 @@ export const appConfig: ApplicationConfig = {
         authInterceptor
       ])
     ),
+    provideYuduI18n({
+      assetPath:'/assets/lang',
+      storageKey:'lang',
+      defaultLang:'en',
+      supportedLangs:['en','es'],
+    })
   ]
 };

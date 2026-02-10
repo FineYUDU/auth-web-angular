@@ -5,14 +5,14 @@
             font__color--primary
             font__weight--regular
             ">
-            {{ 'login.title' | translate:translation.GetLang }}
+            {{ translation.translate('login.title')  }}
         </p>
         <p class="
             font__size--b2
             font__color--secondary
             font__weight--regular
             ">
-            {{ 'login.subtitle' | translate:translation.GetLang }}
+            {{ translation.translate('login.subtitle') }}
         </p>
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
@@ -20,7 +20,7 @@
             [autocomplete]="'current-email'"
             [hasError]="hasError()"
             [icon]="'envelope'"
-            [placeholder]="'input.email' | translate:translation.GetLang"
+            [placeholder]="translation.translate('input.email')"
             formControlName="email"
             fullSize
             type="email"
@@ -28,9 +28,9 @@
         <yd-input
             [autocomplete]="'current-password'"
             [hasError]="hasError()"
-            [errorMessage]="errorMessage() | translate:translation.GetLang"
+            [errorMessage]="translation.translate(errorMessage() || '')"
             [icon]="'lock'"
-            [placeholder]="'input.password' | translate:translation.GetLang"
+            [placeholder]="translation.translate('input.password')"
             formControlName="password"
             fullSize
             type="password"
@@ -45,7 +45,7 @@
                 />
             }
             @else {
-                {{'button.login' | translate:translation.GetLang}}
+                {{ translation.translate('button.login') }}
             }
         </yd-button>
     </form>
@@ -55,9 +55,9 @@
             font__color--secondary
             font__weight--regular
             ">
-            {{ 'login.footer' | translate:translation.GetLang }}
+            {{ translation.translate('login.footer') }}
             <a routerLink="../create-account" class="font__color--link">
-                {{ 'login.url' | translate:translation.GetLang }}
+                {{ translation.translate('login.url') }}
             </a>
         </p>
     </div>

@@ -5,14 +5,14 @@
             font__color--primary
             font__weight--regular
             ">
-            {{ 'create-account.title' | translate:translation.GetLang }}
+            <!-- {{ 'create-account.title' | translate:translation.GetLang }} -->
         </p>
         <p class="
             font__size--b2
             font__color--secondary
             font__weight--regular
             ">
-            {{ 'create-account.subtitle' | translate:translation.GetLang }}
+            <!-- {{ 'create-account.subtitle' | translate:translation.GetLang }} -->
         </p>
     </div>
     <form [formGroup]="createAccountForm" (ngSubmit)="onSubmit()" autocomplete="off">
@@ -20,7 +20,7 @@
             [autocomplete]="'first-name'"
             [hasError]="hasError()"
             [icon]="'user'"
-            [placeholder]="'input.first-name' | translate:translation.GetLang"
+            [placeholder]="'input.first-name'"
             formControlName="firstName"
             fullSize
             type="text"
@@ -29,7 +29,7 @@
             [autocomplete]="'last-name'"
             [hasError]="hasError()"
             [icon]="'user'"
-            [placeholder]="'input.last-name' | translate:translation.GetLang"
+            [placeholder]="'input.last-name'"
             formControlName="lastName"
             fullSize
             type="text"
@@ -38,7 +38,7 @@
             [autocomplete]="'current-email'"
             [hasError]="hasError()"
             [icon]="'envelope'"
-            [placeholder]="'input.email' | translate:translation.GetLang"
+            [placeholder]="'input.email'"
             formControlName="email"
             fullSize
             type="email"
@@ -47,7 +47,7 @@
             [autocomplete]="'current-password'"
             [hasError]="hasError()"
             [icon]="'lock'"
-            [placeholder]="'input.password' | translate:translation.GetLang"
+            [placeholder]="'input.password'"
             formControlName="password"
             fullSize
             type="password"
@@ -57,10 +57,10 @@
             [disabled]="createAccountForm.invalid"
             type="submit">
             @if(isSubmited()) {
-                {{'send...' | translate:translation.GetLang}}
+                <!-- {{'send...' | translate:translation.GetLang}} -->
             }
             @else {
-                {{'button.create-account' | translate:translation.GetLang}}
+                {{'button.create-account'}}
             }
         </yd-button>
     </form>
@@ -70,9 +70,9 @@
             font__color--secondary
             font__weight--regular
             ">
-            {{ 'create-account.footer' | translate:translation.GetLang }}
+            {{ 'create-account.footer' }}
             <a routerLink="../login" class="font__color--link">
-                {{ 'create-account.url' | translate:translation.GetLang }}
+                {{ 'create-account.url' }}
             </a>
         </p>
     </div>

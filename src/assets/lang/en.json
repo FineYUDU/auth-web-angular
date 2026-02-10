@@ -1,38 +1,62 @@
 {
     "lang": {
-        "current":"English",
-        "es":"Spanish",
-        "en":"English"
+        "lang":"language",
+        "current":"english",
+        "es":"spanish",
+        "en":"english"
+    },
+    "theme":{
+        "theme":"theme",
+        "dark":"dark",
+        "light":"light"
+    },
+    "route":{
+        "overview":"overview",
+        "employees":"employees",
+        "settings":"settings",
+        "profile":"profile",
+        "sign-out":"sign out"
     },
     "button":{
-        "login":"Login",
-        "create-account":"Create Account"
+        "login":"login",
+        "create-account":"create Account"
     },
     "auth":{
-        "title":"Welcome back!",
-        "footer":"Developed by"
+        "title":"welcome back!",
+        "footer":"developed by"
     },
     "login":{
-        "title":"Login",
-        "subtitle":"Enter your credentials to continue.",
-        "footer":"Don´t have an account yet?",
-        "url":"Create Acount"
+        "title":"login",
+        "subtitle":"enter your credentials to continue.",
+        "footer":"don´t have an account yet?",
+        "url":"create acount"
     },
     "input":{
-        "email":"Email Address",
-        "first-name":"First Name",
-        "last-name":"Last Name",
-        "password":"Password",
-        "confirm-password":"Confirm Password",
-        "login-error":"Please review the information entered."
+        "email":"email address",
+        "first-name":"first name",
+        "last-name":"last name",
+        "password":"password",
+        "confirm-password":"confirm password",
+        "login-error":"Pplease review the information entered."
+    },
+    "placeholder":{
+        "search":"Search"
     },
     "create-account":{
-        "title":"Create Account",
-        "subtitle":"Enter your information to create an account",
-        "footer":"Already have an account?",
-        "url":"Login"
+        "title":"create account",
+        "subtitle":"enter your information to create an account",
+        "footer":"already have an account?",
+        "url":"login"
     },
     "error":{
-        "unknown":"Couldn’t connect to the server. Please try again later."
+        "unknown":"couldn’t connect to the server. Please try again later."
+    },
+    "notifications":{
+        "title":"notifications",
+        "filter":{
+            "all":"all",
+            "week":"this week",
+            "earlier":"earlier"
+        }
     }
 }

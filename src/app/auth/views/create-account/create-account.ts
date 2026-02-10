@@ -8,16 +8,11 @@ import { YdButton } from "yudu-component-kit";
 import { YdInput } from "yudu-component-kit";
 
 import { AuthApi } from '@core/http/auth-api';
-
-import { Translation } from '@core/services/translation';
-
-import { TranslatePipe } from '@core/pipes/translate.pipe';
 @Component({
   selector: 'app-create-account',
   imports: [
     ReactiveFormsModule,
     RouterLink,
-    TranslatePipe,
     YdButton,
     YdInput,
   ],
@@ -26,7 +21,6 @@ import { TranslatePipe } from '@core/pipes/translate.pipe';
 })
 export default class CreateAccount {
   private fb = inject( FormBuilder );
-  public translation = inject( Translation );
   public auth = inject( AuthApi );
   public router = inject( Router );
 

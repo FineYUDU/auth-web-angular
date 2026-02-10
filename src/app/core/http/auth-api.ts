@@ -7,6 +7,7 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { User, AuthResponse } from '@core/interfaces';
 
 import { environment } from '@environments/environment.development';
+import { Router } from '@angular/router';
 
 export type AuthStatus = 'checking' | 'authenticated' | 'not-authenticated';
 
@@ -15,6 +16,7 @@ export type AuthStatus = 'checking' | 'authenticated' | 'not-authenticated';
 })
 export class AuthApi {
   public _http = inject( HttpClient );
+  public router = inject( Router );
 
   public readonly baseUrl:string = (environment.apiUrl);
 
@@ -69,7 +71,9 @@ export class AuthApi {
 
     return this._http.get<AuthResponse>(`${this.baseUrl}check-status`, {
     }).pipe(
-      map(resp => this.handleAuthSuccess(resp)),
+      map(resp => {
+        return this.handleAuthSuccess(resp)
+      }),
       catchError((error:any)=> this.handleAuthError(error))
     )
   };
@@ -78,7 +82,6 @@ export class AuthApi {
     this._user.set(null);
     this._token.set(null);
     this._authStatus.set('not-authenticated');
-
     localStorage.removeItem('token');
   };
 
